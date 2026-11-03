@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -6,20 +6,24 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { MapPin } from "lucide-react";
-import { useSpots } from "../hooks/use-hook";
+import { MapPin } from "lucide-react"
+import { useSpots } from "../hooks/use-hook"
+import type { SpotDTO } from "../dtos/spot.dto"
 
 interface SpotDialogProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
+  open: boolean
 }
 
-export function SpotDialog({ open, onOpenChange }: SpotDialogProps) {
+export function SpotDialog({
+  open
+}: SpotDialogProps) {
 
-  const { data: spots = [] } = useSpots()
+  const { data: spots = [] } = useSpots();
+
+  function handleSelect(spot: SpotDTO)
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={open}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Selecione a sua mesa</DialogTitle>
@@ -27,16 +31,29 @@ export function SpotDialog({ open, onOpenChange }: SpotDialogProps) {
             Escolha a mesa que você está para fazer o pedido.
           </DialogDescription>
         </DialogHeader>
+
         <div className="min-h-0 overflow-y-auto">
           <div className="grid grid-cols-3 gap-3">
-            {spots.map((spot) => (
-              <Button key={spot.id} variant="outline" className="h-auto min-h-20 flex-col p-4">
+             
+            { spots.map( spot => (
+              <Button 
+                key={spot.id}
+                variant="outline"
+                className={cn(
+                  'h-auto min-h-20 flex-col p-4',
+                spot.id === selectedSpotId && 'border-primary bg-accent text-primary'
+              )}
+
+                onClick={()=> handleSelect(spot)}
+              >
                 <MapPin className="size-6" />
-                {spot.name}
-              </Button>))}
+                { spot.name }
+              </Button>
+            ))}
           </div>
         </div>
+
       </DialogContent>
     </Dialog>
-  );
+  )
 }
