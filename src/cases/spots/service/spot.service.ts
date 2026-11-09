@@ -10,8 +10,9 @@ export const SpotService = {
         return result.data;
     },
 
-    async findOne(id: string): Promise<SpotDTO>{
+    async findOne(): Promise<SpotDTO>{
         const result = await api.get<SpotDTO>('${ENDPOINT}/${id}')
         return result.data;
     }
 }
+
