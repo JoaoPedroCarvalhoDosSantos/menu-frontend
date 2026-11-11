@@ -1,5 +1,5 @@
 export function SpotDialog(){
     return (
-        <h1>Olá, João</h1>
+        <h1></h1>
     )
 }
