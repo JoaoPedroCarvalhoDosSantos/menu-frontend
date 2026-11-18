@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom"
-import { AppLayout } from "./components/layout/app-layout"
 import { ProductPage } from "./pages/products/product-page"
+import { AppLayout } from "./components/layout/app-layout"
 
 
 function App() {

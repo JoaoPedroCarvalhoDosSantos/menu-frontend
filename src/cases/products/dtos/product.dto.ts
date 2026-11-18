@@ -1,11 +1,12 @@
-import type { CategoryDTO } from "@/cases/categories/dtos/category.dto";
+import type { CategoryDto } from "@/cases/categories/dtos/category.dto";
 
-export interface ProductDTO {
+export interface ProductDto {
   id: string;
   name: string;
-  description: string | null;
-  price: number | string; // numeric do Postgres chega como string no JSON
-  picture?: string | null;
+  description?: string | null;
+  price: string | number; // numeric costuma vir como string
   active: boolean;
-  category: CategoryDTO | null;
+  picture?: string | null;
+  category: CategoryDto | null; // relacionamento com a categoria
+
 }

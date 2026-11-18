@@ -12,6 +12,6 @@ export function useCategory(id: string){
     return useQuery({
         queryKey: ['category', id],
         queryFn: () => CategoryService.findOne(id),
-        enabled: !!id // ou boolean(id)
+        enabled: !!id //ou boolean
     })
 }
