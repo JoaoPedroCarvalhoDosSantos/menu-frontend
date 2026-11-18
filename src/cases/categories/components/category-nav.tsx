@@ -36,15 +36,16 @@ export function CategoryNav() {
                 )}
               > 
               {category.icon ? (
-                  <span>ICON</span>
-                ) : (
-                  <Utensils
-                    className="size-10 text-brand"
-                  />
-                )}
-                <span className="leading-tight">{category.name}</span>
-              </Link>
-
+                <img src={category.icon} 
+                  className="size-10" />
+              ) : (
+                <Utensils
+                  className="size-10 text-brand" 
+                />
+              )}
+              <span className="leading-tight">{category.name}</span>
+            </Link>
+            
           </li>
         )) }
       </ul>
